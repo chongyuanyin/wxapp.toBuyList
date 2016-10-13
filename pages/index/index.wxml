@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<view class="container">
+  <view id="head">My To Buy List</view>
+  
+  <view id="addView">
+    <button class="longButton" bindtap='showAddInfo'>add an item</button>
+    <view id="addInfo" class="{{openAddItemView? 'open' : 'closed'}}">
+      <view class="addInfoItem">
+        <label class="addLabel">Name: </label>
+        <input class="borderedItemInfo" type="text" placeholder="enter the name here" bindinput="inputNewName" value="{{newItemName}}"></input>
+      </view>
+      <view class="addInfoItem">
+        <label class="addLabel">Link: </label>
+        <input class="borderedItemInfo" type="text" placeholder="enter the link here" bindinput="inputNewLink" value="{{newItemLink}}"></input>
+      </view>
+      <button class="longButton" bindtap='addItem'>save</button>
+    </view>
+  </view>
+  <scroll-view class="scrollView">
+    <view class="item" wx:for="{{items}}" wx:for-item="item">
+      <input id="item{{index}}" class="{{item.inputClass}}" type="text" value="{{item.name}}" bindtap="{{item.inputTapFunction}}" bindinput='inputItem' disabled="{{item.inputDisabled}}"></input>
+      <button id="edit{{index}}" class="itemButton" type="primary" bindtap="{{item.editButtonTapFunction}}">{{item.editButtonText}}</button>
+      <button id="delete{{index}}" class="itemButton" type="warn" bindtap="{{item.delButtonTapFunction}}">{{item.delButtonText}}</button>
+      <button id="up{{index}}" class="itemButtonNarrow" bindtap="moveUp">{{upButtonText}}</button>
+      <button id="down{{index}}" class="itemButtonNarrow" bindtap="moveDown">{{downButtonText}}</button>
+    </view>
+    <!--<view class="item">
+      <input class="borderedInput" type="text" placeholder="here"></input>
+      <button class="itemButton" type="primary">edit</button>
+      <button class="itemButton" type="warn">del</button>
+    </view>
+    <view class="item">
+      <input class="borderedInput" type="text" placeholder="here"></input>
+      <button class="itemButton" type="primary">edit</button>
+      <button class="itemButton" type="warn">del</button>
+    </view>-->
+  </scroll-view>
+</view>
