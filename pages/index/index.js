@@ -26,16 +26,6 @@ Page ({
 
 
   onLoad: function() {
-    // wx.request({
-    //   url: 'http://www.baidu.com',
-        
-    //   // header: {
-    //   //     'Content-Type': 'application/json'
-    //   // },
-    //   success: function(res) {
-    //     console.log(res.data)
-    //   }
-    // })
 
     var items = wx.getStorageSync("items") || [];
     
@@ -53,7 +43,7 @@ Page ({
       items: items
     });
 
-    console.log(this.data.items);
+    // console.log(this.data.items);
   },
 
   navigateToUrl: function(e) {
@@ -125,7 +115,7 @@ Page ({
   },
 
   editItem: function(e) {
-    console.log("try to edit an item");
+    // console.log("try to edit an item");
 
     var index = e.target.id.slice(4);
 
@@ -145,7 +135,7 @@ Page ({
   },
 
   saveItem: function(e) {
-    console.log("save an updated item");
+    // console.log("save an updated item");
 
     var index = e.target.id.slice(4);
 
@@ -172,10 +162,9 @@ Page ({
   },
 
   deleteItem: function(e) {
-    console.log("delete an item");
+    // console.log("delete an item");
 
     var index = e.target.id.slice(6);
-    console.log(index);
 
     var newItems = [];
     var newInd = 0;
@@ -198,13 +187,13 @@ Page ({
   },
 
   cancelEdit: function(e) {
-    console.log("give up editing the item");
+    // console.log("give up editing the item");
 
     var index = e.target.id.slice(6);
 
     var newItems = this.data.items;
     newItems[index].name = this.data.items[index].name;
-    console.log(newItems[index].name);
+    // console.log(newItems[index].name);
     newItems[index].inputClass = 'disabledBorderedItemInfo';
     newItems[index].inputDisabled = true;
     newItems[index].inputTapFunction = 'navigateToUrl';
@@ -280,28 +269,3 @@ Page ({
 
 
 });
-
-// var app = getApp()
-// Page({
-//   data: {
-//     motto: 'Hello World',
-//     userInfo: {}
-//   },
-//   //事件处理函数
-//   bindViewTap: function() {
-//     wx.navigateTo({
-//       url: '../logs/logs'
-//     })
-//   },
-//   onLoad: function () {
-//     console.log('onLoad')
-//     var that = this
-//     //调用应用实例的方法获取全局数据
-//     app.getUserInfo(function(userInfo){
-//       //更新数据
-//       that.setData({
-//         userInfo:userInfo
-//       })
-//     })
-//   }
-// })
